@@ -1,30 +1,30 @@
+import styles from './Drawer.module.scss'
+
 function Drawer() {
     return (
-        <div style={{display: 'none'}} className="overlay">
-            <div className="drawer d-flex flex-column">
-                <h2 className="d-flex justify-between mb-30">Корзина <img className="removeBtn cu-p" src="/img/btn-remove.svg" alt="Remove" /></h2>
-                <div className="items">
-                    <div className="cartItem d-flex align-center mb-20">
+        <div style={{display: "none"}} className={styles.overlay}>
+            <div className={styles.drawer}>
+                <h2 className="d-flex justify-between mb-30">Корзина <img className={styles.removeBtn} src="/img/btn-remove.svg" alt="Remove" /></h2>
+                <div className={styles.items}>
+                    <div className={styles.cartItem}>
                         <img className="mr-20" width={70} height={70} src="/img/sneakers/item-1.png" alt="Sneakers" />
-                        {/* <div style={{ backgroundImage: 'url(/img/skeakers/item-1.png)' }} className="cartItemImg"></div> */}
                         <div className="mr-20">
                         <p className="mb-5">Мужские Кроссовки Nike Air Max 270</p>
                         <b>12 999 руб.</b>
                         </div>
-                        <img className="removeBtn" src="/img/btn-remove.svg" alt="Remove" />
+                        <img className={styles.removeBtn} src="/img/btn-remove.svg" alt="Remove" />
                     </div>
-                    <div className="cartItem d-flex align-center mb-20">
+                    <div className={styles.cartItem}>
                         <img className="mr-20" width={70} height={70} src="/img/sneakers/item-3.png" alt="Sneakers" />
-                        {/* <div style={{ backgroundImage: 'url(/img/skeakers/item-1.png)' }} className="cartItemImg"></div> */}
                         <div className="mr-20">
                         <p className="mb-5">Мужские Кроссовки Nike Air Max 270</p>
                         <b>12 999 руб.</b>
                         </div>
-                        <img className="removeBtn" src="/img/btn-remove.svg" alt="Remove" />
+                        <img className={styles.removeBtn} src="/img/btn-remove.svg" alt="Remove" />
                     </div>
                 </div>
 
-                <div className="cartTotalBlock">
+                <div className={styles.cartTotalBlock}>
                     <ul>
                         <li className="d-flex">
                             <span>Итого: </span>
@@ -37,7 +37,7 @@ function Drawer() {
                             <b>1074 руб. </b>
                         </li>
                     </ul>
-                    <button className="greenButton">Оформить заказ <img src="/img/arrow.svg" alt="Arrow" /></button>
+                    <button className={styles.greenButton}>Оформить заказ <img src="/img/arrow.svg" alt="Arrow" /></button>
                 </div>
             </div>
         </div>

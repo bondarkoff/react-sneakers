@@ -1,0 +1,111 @@
+.drawer {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    height: 100%;
+    width: 420px;
+    right: 0;
+    padding: 30px;
+    background: #FFFFFF;
+    box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+    h2 {
+      margin: 0;
+  
+    }
+    .items {
+        display: flex;
+        overflow: auto;
+        margin-bottom: 40px;
+        flex: 1;
+        flex-direction: column;
+    }
+}
+
+.overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color:rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.cartItem {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #f3f3f3;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 20px;
+    p, b {
+      font-size: 14px;
+      margin: 0;
+    }
+    
+  
+    .removeBtn {
+      opacity: 0.5;
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+      &:hover {
+        opacity: 1;
+      }
+    }
+}
+
+
+.cartTotalBlock {
+    ul {
+      margin-bottom: 30px !important;
+      li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        div {
+          flex: 1;
+          height: 1px;
+          border-bottom: 1px dashed #dfdfdf
+        }
+      }
+    }
+}
+
+// .greenButton {
+//     position: relative;
+//       &:hover {
+//         img {
+//           transform: translateX(5px);
+//         }
+//       }
+//       img {
+//         transition: all 0.14s ease-in-out;
+//         position: absolute;
+//         top: 20px;
+//         right: 30px;
+//     }
+//   }
+
+  .greenButton {
+    width: 100%;
+    width: 325px;
+    height: 55px;
+    background: #9DD558;
+    border-radius: 18px;
+    border: none;
+    cursor: pointer;
+
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: #FFFFFF;
+    transition: all .2s ease-in-out;
+    &:hover {
+      background: lighten($color: #9dd558, $amount: 5%)
+    }
+    &:active {
+      background: darken($color: #9dd558, $amount: 5%)
+    }
+}
