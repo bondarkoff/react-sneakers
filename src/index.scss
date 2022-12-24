@@ -34,15 +34,15 @@ header {
 }
 
 
-.button {
-  background: #fff;
-  border: 1px solid #f2f2f2;
-  box-sizing: border-box;
-  border-radius: 8px;
-  height: 32px;
-  width: 32px;
-  cursor: pointer;
-}
+// .button {
+//   background: #fff;
+//   border: 1px solid #f2f2f2;
+//   box-sizing: border-box;
+//   border-radius: 8px;
+//   height: 32px;
+//   width: 32px;
+//   cursor: pointer;
+// }
 
 .search-block {
   border: 1px solid #f3f3f3;
@@ -55,4 +55,20 @@ header {
     font-size: 16px;
     width: 200px;
   }
+}
+
+.cartItem {
+  border: 1px solid #f3f3f3;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.cartItemImg {
+  height: 70px;
+  width: 140px;
+  background-size: contain;
+  background-position: 0 -3px;
+  background-repeat: no-repeat;
+  margin-right: 20px;
 }
