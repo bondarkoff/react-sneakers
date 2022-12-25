@@ -14,7 +14,7 @@ function Header(props) {
                     <span>1205 руб.</span>
                 </li>
                     <li>
-                    <img width={18} height={18} src="/img/user.svg" alt="Cart" />
+                    <img width={18} height={18} src="/img/user.svg" alt="User" />
                 </li>
             </ul>
         </header>
