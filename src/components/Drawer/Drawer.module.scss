@@ -37,7 +37,6 @@
     align-items: center;
     border: 1px solid #f3f3f3;
     border-radius: 20px;
-    overflow: hidden;
     padding: 20px;
     p, b {
       font-size: 14px;
@@ -71,6 +70,35 @@
     }
 }
 
+.cartEmpty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex: 1;
+  text-align: center;
+  p {
+    width: 280px;
+    line-height: 24px;
+  }
+  .greenButton {
+    width: 245px;
+    margin-top: 20px;
+    &:hover {
+      img {
+        transform: rotate(180deg) translateX(3px);
+      }
+    }
+  }
+  .rotate {
+    position: relative;
+    top: 1px;
+    transform: rotate(180deg);
+    margin-right: 15px;
+    transition: all 0.15s ease-in-out;
+  }
+}
+
 // .greenButton {
 //     position: relative;
 //       &:hover {
@@ -86,25 +114,25 @@
 //     }
 //   }
 
-  .greenButton {
-    width: 100%;
-    width: 325px;
-    height: 55px;
-    background: #9DD558;
-    border-radius: 18px;
-    border: none;
-    cursor: pointer;
+.greenButton {
+  width: 100%;
+  width: 325px;
+  height: 55px;
+  background: #9DD558;
+  border-radius: 18px;
+  border: none;
+  cursor: pointer;
 
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 19px;
-    text-align: center;
-    color: #FFFFFF;
-    transition: all .2s ease-in-out;
-    &:hover {
-      background: lighten($color: #9dd558, $amount: 5%)
-    }
-    &:active {
-      background: darken($color: #9dd558, $amount: 5%)
-    }
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #FFFFFF;
+  transition: all .2s ease-in-out;
+  &:hover {
+    background: lighten($color: #9dd558, $amount: 5%)
+  }
+  &:active {
+    background: darken($color: #9dd558, $amount: 5%)
+  }
 }
