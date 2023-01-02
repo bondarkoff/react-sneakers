@@ -15,26 +15,33 @@ function App() {
   const [cartOpened, setCartOpened] = React.useState(false);
 
   React.useEffect(() => {
-    axios.get('https://63a71f697989ad3286ea25c4.mockapi.io/items').then(res => {
-      setItems(res.data);
-    });
-    axios.get('https://63a71f697989ad3286ea25c4.mockapi.io/cart').then(res => {
-      setCartItems(res.data);
-    });
-    axios.get('https://63a71f697989ad3286ea25c4.mockapi.io/favourites').then(res => {
-      setFavourites(res.data);
-    });
+    async function fetchData() {
+      const itemsResponse = await axios.get('https://63a71f697989ad3286ea25c4.mockapi.io/items');
+      const cartResponse = await axios.get('https://63a71f697989ad3286ea25c4.mockapi.io/cart');
+      const favouritesResponse = await axios.get('https://63a71f697989ad3286ea25c4.mockapi.io/favourites');
+      
+      setCartItems(cartResponse.data);
+      setFavourites(favouritesResponse.data);
+      setItems(itemsResponse.data);
+    }
+
+    fetchData();
   }, []);
 
   const onAddToCart = (obj) => {
-    axios.post('https://63a71f697989ad3286ea25c4.mockapi.io/cart', obj);
-    setCartItems(prev => [...prev, obj])
+    if (cartItems.find(item => Number(item.id) === Number(obj.id))) {
+      axios.delete(`https://63a71f697989ad3286ea25c4.mockapi.io/cart/${obj.id}`);
+      setCartItems(prev => prev.filter(item => Number(item.id) !== Number(obj.id)));
+    } else {
+      axios.post('https://63a71f697989ad3286ea25c4.mockapi.io/cart', obj);
+      setCartItems(prev => [...prev, obj])
+    }
   }
 
   const onAddToFavourite = async (obj) => {
     try {
       if (favourites.find(favObj => favObj.id === obj.id)) {
-        axios.delete(`https://63a71f697989ad3286ea25c4.mockapi.io/favourites/${obj.id}`);
+        axios.delete(`https://63a71f697989ad3286ea25c4.mockapi.io/cart/${obj.id}`)
       } else {
         const { data } = await axios.post('https://63a71f697989ad3286ea25c4.mockapi.io/favourites', obj);
         setFavourites(prev => [...prev, data])
@@ -62,6 +69,7 @@ function App() {
         <Route path="/" exact element ={
           <Home 
             items={items} 
+            cartItems={cartItems}
             searchValue={searchValue} 
             setSearchValue={setSearchValue} 
             onChangeSearchInput={onChangeSearchInput} 

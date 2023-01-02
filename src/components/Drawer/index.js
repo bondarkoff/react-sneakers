@@ -9,8 +9,7 @@ function Drawer({ onClose, onRemove, items = [] }) {
                 {
                     items.length > 0 ? <div className={styles.items}>
                     {items.map((obj) => (
-                    <>
-                        <div className={styles.cartItem}>
+                        <div key={obj.id} className={styles.cartItem}>
                             <div className="cartItemImg" style={{ backgroundImage: `url(${obj.imageUrl})` }}/>
                             <div className="mr-20">
                                 <p className="mb-5">{obj.title}</p>
@@ -18,7 +17,6 @@ function Drawer({ onClose, onRemove, items = [] }) {
                             </div>
                             <img onClick={() => onRemove(obj.id)} className={styles.removeBtn} src="/img/btn-remove.svg" alt="Remove" />
                         </div>
-                    </>
                     ))}
                         <div className={styles.cartTotalBlock}>
                             <ul>
