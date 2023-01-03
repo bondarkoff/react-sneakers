@@ -7,6 +7,8 @@ import Drawer from "./components/Drawer";
 import Home from "./components/pages/Home";
 import Favourites from "./components/pages/Favourites"
 
+import AppContext from "./context";
+
 function App() {
   const [items, setItems] = React.useState([])
   const [cartItems, setCartItems] = React.useState([])
@@ -63,33 +65,38 @@ function App() {
     setSearchValue(event.target.value);
   }
 
+  const isItemAdded = (id) => {
+    return cartItems.some((obj) => Number(obj.id) === Number(id))
+  }
+
   return (
-    <div className="wrapper clear"> 
-      {cartOpened && <Drawer items={cartItems} onClose={() => setCartOpened(false)} onRemove={onRemoveItem}/>}
-      <Header onClickCart={() => setCartOpened(true)} />
+   <AppContext.Provider value={{ cartItems, favourites, items, isItemAdded, onAddToFavourite }}> 
+      <div className="wrapper clear"> 
+        {cartOpened && <Drawer items={cartItems} onClose={() => setCartOpened(false)} onRemove={onRemoveItem}/>}
+        <Header onClickCart={() => setCartOpened(true)} />
 
-      <Routes>
-        <Route path="/" exact element ={
-          <Home 
-            items={items} 
-            cartItems={cartItems}
-            searchValue={searchValue} 
-            setSearchValue={setSearchValue} 
-            onChangeSearchInput={onChangeSearchInput} 
-            onAddToFavourite={onAddToFavourite} 
-            onAddToCart={onAddToCart}
-            isLoading={isLoading}
-          />}>
-        </Route>
-        <Route path="/favourites" exact element={
-          <Favourites 
-            items={favourites}
-            onAddToFavourite={onAddToFavourite}
-          />}>
-        </Route>
-      </Routes>
+        <Routes>
+          <Route path="/" exact element ={
+            <Home 
+              items={items} 
+              cartItems={cartItems}
+              searchValue={searchValue} 
+              setSearchValue={setSearchValue} 
+              onChangeSearchInput={onChangeSearchInput} 
+              onAddToFavourite={onAddToFavourite} 
+              onAddToCart={onAddToCart}
+              isLoading={isLoading}
+            />}>
+          </Route>
+          <Route path="/favourites" exact element={
+            <Favourites 
+              items={favourites}
+            />}>
+          </Route>
+        </Routes>
 
-    </div>
+      </div>
+   </AppContext.Provider>
   );
 }
 
