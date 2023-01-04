@@ -4,8 +4,8 @@ import {Route, Routes} from 'react-router-dom'
 
 import Header from "./Header";
 import Drawer from "./components/Drawer";
-import Home from "./components/pages/Home";
-import Favourites from "./components/pages/Favourites"
+import Home from "./pages/Home";
+import Favourites from "./pages/Favourites"
 
 import AppContext from "./context";
 

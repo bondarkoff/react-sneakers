@@ -1,6 +1,6 @@
 import React from "react";
 
-import Card from "../Card"
+import Card from "../components/Card"
 
 function Home ({items, searchValue, setSearchValue, onChangeSearchInput, onAddToFavourite, onAddToCart, isLoading}) {    
     const renderItems = () => {
