@@ -35,9 +35,9 @@ function Card({ id, onFavourite, imageUrl, title, price, onPlus, favourited = fa
                 <rect x="0" y="175" rx="8" ry="8" width="80" height="24" /> 
                 <rect x="140" y="172" rx="8" ry="8" width="32" height="32" />
               </ContentLoader> : <>
-              <div className={styles.favourite} onClick={onClickFavourite}>
+            {onFavourite && (<div className={styles.favourite} onClick={onClickFavourite}>
                 <img src={isFavourite ? "img/heart-liked.svg" : "img/heart-unliked.png"} alt="Heart"/>
-            </div>
+            </div>)}
             <img width={133} height={112} src={imageUrl} alt="Sneakers" />
             <h5>{title}</h5>
             <div className="d-flex justify-between align-center">
@@ -46,7 +46,7 @@ function Card({ id, onFavourite, imageUrl, title, price, onPlus, favourited = fa
                     <b>{price} руб.</b>
                 </div>
             <button>
-                <img className={styles.plus} onClick={onCLickPlus} src={isItemAdded(id) ? "img/btn-checked.svg" : "img/btn-plus.svg"} alt="Plus" />
+                {onPlus && (<img className={styles.plus} onClick={onCLickPlus} src={isItemAdded(id) ? "img/btn-checked.svg" : "img/btn-plus.svg"} alt="Plus" />)}
             </button>
             </div>
               </>
