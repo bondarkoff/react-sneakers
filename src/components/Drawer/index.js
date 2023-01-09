@@ -38,7 +38,7 @@ function Drawer({ onClose, onRemove, items = [], opened }) {
     return (
         <div className={`${styles.overlay} ${opened ? styles.overlayVisible : ''}`}>
             <div className={styles.drawer}>
-                <h2 className="d-flex justify-between mb-30">Корзина{' '} <img onClick={onClose} className={styles.removeBtn} src="/img/btn-remove.svg" alt="Close" /></h2>
+                <h2 className="d-flex justify-between mb-30">Корзина{' '} <img onClick={onClose} className={styles.removeBtn} src="img/btn-remove.svg" alt="Close" /></h2>
                    
                     {
                         items.length > 0 ? <div className='d-flex flex-column flex'>   
@@ -50,7 +50,7 @@ function Drawer({ onClose, onRemove, items = [], opened }) {
                                         <p className="mb-5">{obj.title}</p>
                                         <b>{obj.price} руб.</b>
                                     </div>
-                                    <img onClick={() => onRemove(obj.id)} className={styles.removeBtn} src="/img/btn-remove.svg" alt="Remove" />
+                                    <img onClick={() => onRemove(obj.id)} className={styles.removeBtn} src="img/btn-remove.svg" alt="Remove" />
                                 </div>
                             ))}
                         </div>
@@ -72,7 +72,7 @@ function Drawer({ onClose, onRemove, items = [], opened }) {
                     </div> : <Info 
                                 title={isOrderCompleted ? "Заказ оформлен!" : "Корзина пустая"} 
                                 description={isOrderCompleted ? `Ваш заказ #${orderId} скоро будет передан курьерской службе доставки` : "Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ."} 
-                                image={isOrderCompleted ? "/img/complete-order.png" : "/img/empty-cart.png"} 
+                                image={isOrderCompleted ? "img/complete-order.png" : "img/empty-cart.png"} 
                             />
                     }
                 </div>
