@@ -39,42 +39,44 @@ function Drawer({ onClose, onRemove, items = [], opened }) {
         <div className={`${styles.overlay} ${opened ? styles.overlayVisible : ''}`}>
             <div className={styles.drawer}>
                 <h2 className="d-flex justify-between mb-30">Корзина{' '} <img onClick={onClose} className={styles.removeBtn} src="/img/btn-remove.svg" alt="Close" /></h2>
-                
-                {
-                    items.length > 0 ? <div className={styles.items}>
-                    {items.map((obj) => (
-                        <div key={obj.id} className={styles.cartItem}>
-                            <div className="cartItemImg" style={{ backgroundImage: `url(${obj.imageUrl})` }}/>
-                            <div className="mr-20">
-                                <p className="mb-5">{obj.title}</p>
-                                <b>{obj.price} руб.</b>
+                   
+                    {
+                        items.length > 0 ? <div className='d-flex flex-column flex'>   
+                        <div className={styles.items}>
+                            {items.map((obj) => (
+                                <div key={obj.id} className={styles.cartItem}>
+                                    <div className="cartItemImg" style={{ backgroundImage: `url(${obj.imageUrl})` }}/>
+                                    <div className="mr-20">
+                                        <p className="mb-5">{obj.title}</p>
+                                        <b>{obj.price} руб.</b>
+                                    </div>
+                                    <img onClick={() => onRemove(obj.id)} className={styles.removeBtn} src="/img/btn-remove.svg" alt="Remove" />
+                                </div>
+                            ))}
+                        </div>
+                            <div className={styles.cartTotalBlock}>
+                                <ul>
+                                    <li className="d-flex">
+                                        <span>Итого: </span>
+                                        <div></div>
+                                        <b>{totalPrice} руб. </b>
+                                    </li>
+                                    <li className="d-flex">
+                                        <span>Налог 5%: </span>
+                                        <div></div>
+                                        <b>{totalTax} руб. </b>
+                                    </li>
+                                </ul>
+                                <button disabled={isLoading} onClick={onClickOrder} className={styles.greenButton}>Оформить заказ <img src="/img/arrow.svg" alt="Arrow" /></button>
                             </div>
-                            <img onClick={() => onRemove(obj.id)} className={styles.removeBtn} src="/img/btn-remove.svg" alt="Remove" />
-                        </div>
-                    ))}
-                        <div className={styles.cartTotalBlock}>
-                            <ul>
-                                <li className="d-flex">
-                                    <span>Итого: </span>
-                                    <div></div>
-                                    <b>{totalPrice} руб. </b>
-                                </li>
-                                <li className="d-flex">
-                                    <span>Налог 5%: </span>
-                                    <div></div>
-                                    <b>{totalTax} руб. </b>
-                                </li>
-                            </ul>
-                            <button disabled={isLoading} onClick={onClickOrder} className={styles.greenButton}>Оформить заказ <img src="/img/arrow.svg" alt="Arrow" /></button>
-                        </div>
-                </div> : <Info 
-                            title={isOrderCompleted ? "Заказ оформлен!" : "Корзина пустая"} 
-                            description={isOrderCompleted ? `Ваш заказ #${orderId} скоро будет передан курьерской службе доставки` : "Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ."} 
-                            image={isOrderCompleted ? "/img/complete-order.png" : "/img/empty-cart.png"} 
-                        />
-                }
+                    </div> : <Info 
+                                title={isOrderCompleted ? "Заказ оформлен!" : "Корзина пустая"} 
+                                description={isOrderCompleted ? `Ваш заказ #${orderId} скоро будет передан курьерской службе доставки` : "Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ."} 
+                                image={isOrderCompleted ? "/img/complete-order.png" : "/img/empty-cart.png"} 
+                            />
+                    }
+                </div>
             </div>
-        </div>
     );
 }
 
