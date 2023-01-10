@@ -9,7 +9,7 @@ import styles from './Drawer.module.scss'
 const delay = (ms) => new Promise((resolve) =>  setTimeout(resolve, ms))
 
 function Drawer({ onClose, onRemove, items = [], opened }) {
-    const {cartItems, setCartItems, totalPrice, totalTax} = useCart()
+    const {cartItems, setCartItems, totalPrice, totalTax, totalAll} = useCart()
     const [orderId, setOrderId] = React.useState(null)
     const [isOrderCompleted, setIsOrderComplete] = React.useState(false)
     const [isLoading, setIsLoading] = React.useState(false)
@@ -59,12 +59,17 @@ function Drawer({ onClose, onRemove, items = [], opened }) {
                                     <li className="d-flex">
                                         <span>Итого: </span>
                                         <div></div>
-                                        <b>{totalPrice} руб. </b>
+                                        <b>{totalPrice} грн. </b>
                                     </li>
                                     <li className="d-flex">
                                         <span>Налог 5%: </span>
                                         <div></div>
-                                        <b>{totalTax} руб. </b>
+                                        <b>{totalTax} грн. </b>
+                                    </li>
+                                    <li className="d-flex">
+                                        <span>К оплате: </span>
+                                        <div></div>
+                                        <b>{totalAll} грн.</b>
                                     </li>
                                 </ul>
                                 <button disabled={isLoading} onClick={onClickOrder} className={styles.greenButton}>Оформить заказ <img src="/img/arrow.svg" alt="Arrow" /></button>
